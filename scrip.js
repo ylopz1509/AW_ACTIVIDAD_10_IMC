@@ -13,30 +13,33 @@ class CalculadoraIMC {
    //metodo para generar el resultado completo
     obtenerResultado() {
         const imc = this.calcularIMC(); 
-        let categoria, mensaje; 
-
+        let categoria, mensaje, rutaImagen; 
         if (imc < 18.5) {
             categoria = "Bajo Peso";
             mensaje = "Necesitas ganar un poco de peso para estar saludable";
+            rutaImagen = "images/bajo-peso.png"; 
         } else if (imc < 25) {
             categoria = "Peso Normal";
             mensaje = "Tienes un peso saludable.";
+            rutaImagen = "images/peso-normal.png"; 
         } else if (imc < 30) {
             categoria = "Sobrepeso";
             mensaje = "Considera una dieta más balanceada";
+            rutaImagen = "images/sobrepeso.png"; 
         } else {
             categoria = "Obesidad";
             mensaje = "Es importante consultar un nutriologo";
+            rutaImagen = "images/obesidad.png"; 
         }
         return `
             <p>Tu IMC es: <strong>${imc.toFixed(2)}</strong></p>
             <h3>Categoría: ${categoria}</h3>
             <p>${mensaje}</p>
+            <img src="${rutaImagen}" alt="${categoria}" class="img-resultado">
         `;
     }
 }
 
-// escuchador de eventos
 document.getElementById('forma-imc').addEventListener("submit", function(e) {
     e.preventDefault();
 
